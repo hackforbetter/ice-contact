@@ -1626,8 +1626,6 @@
           return a[1];
         })
         .join(","),
-      "?subject=",
-      "Stop the Atrocity",
       "&body=",
       bd
     );
