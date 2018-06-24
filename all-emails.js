@@ -1604,6 +1604,7 @@
     );
     a.href = s.join("");
     a.innerHTML = "Send to " + emails[i][0];
+    a.onclick = stat("individual", emails[i][1]);
     li.appendChild(a);
     all.appendChild(li);
   }
@@ -1631,6 +1632,7 @@
     );
     a.href = s.join("");
     a.innerHTML = "Bulk Group " + (i + 1) + " (BCC'd)";
+    a.onclick = stat("bulk-bcc", "Bulk Group " + (i + 1) + " (BCC'd)");
     li.appendChild(a);
     bcc.appendChild(li);
   }
@@ -1639,4 +1641,12 @@
   document.body.appendChild(bcc);
   document.body.appendChild(h2);
   document.body.appendChild(all);
+
+  function stat(label, value) {
+    return function() {
+      if (ga) {
+        ga("send", "email", label, value);
+      }
+    };
+  }
 })();
